@@ -9,6 +9,12 @@
 
 <img width="498" alt="Screen Shot 2019-04-30 at 2 03 26 PM" src="https://user-images.githubusercontent.com/26368039/57001701-661d7e80-6b77-11e9-8c75-c08b5fc63a20.png">
 
+<img width="505" alt="Screen Shot 2019-04-30 at 2 03 34 PM" src="https://user-images.githubusercontent.com/26368039/57001728-8d744b80-6b77-11e9-933e-0a7adfa72761.png">
+
+<img width="392" alt="Screen Shot 2019-04-30 at 2 03 43 PM" src="https://user-images.githubusercontent.com/26368039/57001735-91a06900-6b77-11e9-9b37-d43e58e6d99d.png">
+
+<img width="334" alt="Screen Shot 2019-04-30 at 2 03 59 PM" src="https://user-images.githubusercontent.com/26368039/57001742-96651d00-6b77-11e9-8fcb-d26bcbfd39f8.png">
+
 
 
 
