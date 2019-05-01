@@ -1,3 +1,21 @@
+# Project4: Business App
+
+### User Story:
+1- In the home page user can login.
+2- After login user sees her profile and her favorite businesses list
+3- User can edit/delete her profile by fetching calls to the MySql using Java/Spring in the backend.
+4- User can edit/delete/add diffrent businesses to her favorite liste by fetching calls to the MySql using Java/Spring in the backend.
+5- There is a search box in a user profile can search for specific business and fetch data from Yelp API.
+
+
+
+
+
+
+
+
+================================================================
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
