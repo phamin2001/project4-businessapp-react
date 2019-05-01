@@ -7,6 +7,8 @@
 4- User can edit/delete/add diffrent businesses to her favorite liste by fetching calls to the MySql using Java/Spring in the backend.
 5- There is a search box in a user profile can search for specific business and fetch data from Yelp API.
 
+<img width="498" alt="Screen Shot 2019-04-30 at 2 03 26 PM" src="https://user-images.githubusercontent.com/26368039/57001701-661d7e80-6b77-11e9-8c75-c08b5fc63a20.png">
+
 
 
 
