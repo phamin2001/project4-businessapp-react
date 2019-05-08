@@ -1,13 +1,40 @@
+<<<<<<< HEAD
 
 
 
 
 
+=======
+# Project4: Business App
+
+### User Story:
+1- In the home page user can login.
+2- After login user sees her profile and her favorite businesses list
+3- User can edit/delete her profile by fetching calls to the MySql using Java/Spring in the backend.
+4- User can edit/delete/add diffrent businesses to her favorite liste by fetching calls to the MySql using Java/Spring in the backend.
+5- There is a search box in a user profile can search for specific business and fetch data from Yelp API.
+
+<img width="498" alt="Screen Shot 2019-04-30 at 2 03 26 PM" src="https://user-images.githubusercontent.com/26368039/57001701-661d7e80-6b77-11e9-8c75-c08b5fc63a20.png">  
+
+<img width="505" alt="Screen Shot 2019-04-30 at 2 03 34 PM" src="https://user-images.githubusercontent.com/26368039/57001728-8d744b80-6b77-11e9-933e-0a7adfa72761.png">
+
+<img width="392" alt="Screen Shot 2019-04-30 at 2 03 43 PM" src="https://user-images.githubusercontent.com/26368039/57001735-91a06900-6b77-11e9-9b37-d43e58e6d99d.png">  
+
+<img width="334" alt="Screen Shot 2019-04-30 at 2 03 59 PM" src="https://user-images.githubusercontent.com/26368039/57001742-96651d00-6b77-11e9-8fcb-d26bcbfd39f8.png">
+>>>>>>> c33092a51a125a328709e5419290f43ea7b1a8c4
 
 
 
 
 
+<<<<<<< HEAD
+=======
+
+
+
+================================================================
+
+>>>>>>> c33092a51a125a328709e5419290f43ea7b1a8c4
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
