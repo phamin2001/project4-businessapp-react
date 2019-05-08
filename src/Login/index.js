@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { throwStatement } from '@babel/types';
 
 class Login extends Component {
     constructor() {
@@ -7,8 +6,7 @@ class Login extends Component {
 
         this.state = {
             username            : '',
-            password            : '',
-            parsedLoginResponse : []
+            password            : ''
         }
     }
 
@@ -18,7 +16,39 @@ class Login extends Component {
         })
     }
 
+    hadnleLoginSubmit = async (e) => {
+        e.preventDefault();
 
+        try {
+            const loginResponse = await fetch('http://localhost:8080/users/login', {
+                method       :  'POST',
+                credentials  :  'include',
+                body         :   JSON.stringify(this.state),
+                headers      :   {
+                    'Content-type' : 'application/json'
+                }
+            });
+            console.log(loginResponse);
+
+            if(loginResponse.status != 200) {
+                throw new Error("Invalid User!!");
+            }
+
+            const parsedLoginResponse = await loginResponse.json();
+            // console.log(parsedLoginResponse)
+            
+            if(parsedLoginResponse.logged) {
+                this.props.handleLogin(parsedLoginResponse.username, parsedLoginResponse.userId);
+                this.props.history.push('/users/' + parsedLoginResponse.userId);
+            } else {
+                alert('something wrong, try again.');
+                this.props.history.push('/login');
+            }
+        } catch (err) {
+            console.log(err);
+            return err;
+        }
+    }
 
     render() {
         return(

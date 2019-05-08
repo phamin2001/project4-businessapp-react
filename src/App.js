@@ -3,6 +3,7 @@ import React, { Component }  from 'react';
 import { Route, Switch}      from 'react-router-dom';
 import AuthenticationGateway from './AuthenticationGateway';
 import Login                 from './Login';
+import User                  from  './User';
 
 
 const My404 = () => {
@@ -36,10 +37,15 @@ class App extends Component {
     return (
       <main>
         <Switch>
-          <Route exact path          =  '/'       component = { AuthenticationGateway } />
-          <Route exact path          =  '/login'  
-                       render        =  { (props) => ( <Login {...props}
-                       handleLogin   =  {this.handleLogin} />)}
+          <Route exact path               =  '/'       component = { AuthenticationGateway } />
+          <Route exact path               =  '/login'  
+                       render             =  { (props) => ( <Login {...props}
+                       handleLogin        =  {this.handleLogin} />)}
+          />
+          <Route exact path               =  {`/users/${this.state.userId}`} 
+                       router             =  { (props) => ( <User {...props}
+                       loggedInUsername   =  {this.state.username}
+                       loggedInUserId     =  {this.state.userId} />)} 
           />
 
 
