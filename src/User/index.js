@@ -8,7 +8,7 @@ class User extends Component {
     
     logOutUser = async (e) => {
         try {
-            const response = await fetch('http://localhost:8080/logout', {
+            const response = await fetch('http://localhost:8080/login/logout', {
                 method          :   'POST',
                 credentials     :   'include'
             });
