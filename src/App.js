@@ -34,6 +34,9 @@ class App extends Component {
 
 
   render() {
+    const { handle } = this.state.userId;
+
+
     return (
       <main>
         <Switch>
@@ -42,8 +45,8 @@ class App extends Component {
                        render             =  { (props) => ( <Login {...props}
                        handleLogin        =  {this.handleLogin} />)}
           />
-          <Route exact path               =  {`/users/${this.state.userId}`} 
-                       router             =  { (props) => ( <User {...props}
+          <Route exact path               =  '/users/:handle'
+                       render             =  { (props) => ( <User {...props}
                        loggedInUsername   =  {this.state.username}
                        loggedInUserId     =  {this.state.userId} />)} 
           />
