@@ -1,9 +1,10 @@
 import './App.css';
-import React, { Component }  from 'react';
-import { Route, Switch}      from 'react-router-dom';
-import AuthenticationGateway from './AuthenticationGateway';
-import Login                 from './Login';
-import User                  from  './User';
+import React, { Component }  from   'react';
+import { Route, Switch}      from   'react-router-dom';
+import AuthenticationGateway from   './AuthenticationGateway';
+import Login                 from   './Login';
+import User                  from   './User';
+import EditBusiness          from   './EditBusiness';
 
 
 const My404 = () => {
@@ -43,15 +44,15 @@ class App extends Component {
     })
   }
 
-  handleEditedBusiiness = (business) => {
+  handleEditedBusiness = (business) => {
     this.setState({
       editedBusiness : business
     })
   }
 
   render() {
-    const { handleUserId }    = this.state.userId;
-    const { handleBusinessId} = this.state.editedBusiness.id;
+    const { handleUserId }     = this.state.userId;
+    // const { handleBusinessId } = this.state.editedBusiness.id;
 
     return (
       <main>
@@ -66,9 +67,9 @@ class App extends Component {
                        loggedInUsername                   =  {this.state.username}
                        loggedInUserId                     =  {this.state.userId}
                        handleCompleteUserBusinessesInfo   =  {this.handleCompleteUserBusinessesInfo} 
-                       handleEditedBusiiness              =  {this.handleEditedBusiiness} />)} 
+                       handleEditedBusiness              =   {this.handleEditedBusiness} />)} 
           />
-          <Route exact path                               =  '/users/:handleUserId/businesses/:handleBusinessId' component = { EditBusiness} />
+          {/* <Route exact path                               =  '/users/:handleUserId/businesses/:handleBusinessId' component = { EditBusiness } /> */}
 
 
 

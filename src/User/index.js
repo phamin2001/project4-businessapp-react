@@ -66,8 +66,8 @@ class User extends Component {
         const userBusinessesList = this.state.businesses.map((business, i) => {
             return (
                 <li onClick = {this.handleCurrentBusiness.bind(null, business)}>
-                    {business.name}
-                    {business.location}
+                    <Link to={ {pathname: '/users/' + `${this.props.loggedInUserId}` + '/businesses/' + `${business.id}`} }> {business.name} ,  {business.location}</Link>
+                   
                 </li>
             )
 
@@ -88,7 +88,8 @@ class User extends Component {
                     <button name = 'logout' onClick = {this.logOutUser} > Log Out</button><br/>
                 </label>
                 <label>
-                    <h3>All User Businesses: <Link to={ {pathname: '/users/' + `${this.props.loggedInUserId}` + '/businesses'} }>{userBusinessesList}</Link></h3>
+                    <h3>All User Businesses:  </h3>
+                        {userBusinessesList}
                 </label>
                 <label> 
                     <h3><button onClick = { () => this.props.history.push('/users/' + `${this.props.loggedInUserId}` + '/businesses/newbusiness') }>Add New Business</button></h3>
