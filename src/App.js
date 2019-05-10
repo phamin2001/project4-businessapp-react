@@ -51,8 +51,8 @@ class App extends Component {
   }
 
   render() {
-    const { handleUserId }     = this.state.userId;
-    // const { handleBusinessId } = this.state.editedBusiness.id;
+    const handleUserId      = this.state.userId;
+    const handleBusinessId  = this.state.editedBusiness.id;
 
     return (
       <main>
@@ -67,12 +67,15 @@ class App extends Component {
                        loggedInUsername                   =  {this.state.username}
                        loggedInUserId                     =  {this.state.userId}
                        handleCompleteUserBusinessesInfo   =  {this.handleCompleteUserBusinessesInfo} 
-                       handleEditedBusiness              =   {this.handleEditedBusiness} />)} 
+                       handleEditedBusiness               =  {this.handleEditedBusiness} />)} 
           />
-          {/* <Route exact path                               =  '/users/:handleUserId/businesses/:handleBusinessId' component = { EditBusiness } /> */}
-
-
-
+          <Route exact path                               =  '/users/:handleUserId/businesses/:handleBusinessId'
+                       render                             =  { (props) => ( <EditBusiness {...props}
+                       loggedInUsername                   =  {this.state.username}
+                       loggedInUserId                     =  {this.state.userId}
+                       editedBusiness                     =  {this.state.editedBusiness} 
+                       handleEditedBusiness               =  {this.handleEditedBusiness} />)} 
+          />
 
         </Switch>
       </main>
