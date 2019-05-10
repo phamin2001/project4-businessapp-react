@@ -21,6 +21,10 @@ class App extends Component {
     this.state = {
       username : '',
       userId   : '',
+      completeUserBusinessesInfo : {
+        loggedInUserBusinesses  :  []
+      },
+      editedBusiness : {}
     }
   }
 
@@ -31,25 +35,40 @@ class App extends Component {
     })
   }
 
+  handleCompleteUserBusinessesInfo = (businessesParsed) => {
+    this.setState({
+      completeUserBusinessesInfo : {
+        loggedInUserBusinesses : businessesParsed
+      }
+    })
+  }
 
+  handleEditedBusiiness = (business) => {
+    this.setState({
+      editedBusiness : business
+    })
+  }
 
   render() {
-    const { handle } = this.state.userId;
-
+    const { handleUserId }    = this.state.userId;
+    const { handleBusinessId} = this.state.editedBusiness.id;
 
     return (
       <main>
         <Switch>
-          <Route exact path               =  '/'       component = { AuthenticationGateway } />
-          <Route exact path               =  '/login'  
-                       render             =  { (props) => ( <Login {...props}
-                       handleLogin        =  {this.handleLogin} />)}
+          <Route exact path                               =  '/'       component = { AuthenticationGateway } />
+          <Route exact path                               =  '/login'  
+                       render                             =  { (props) => ( <Login {...props}
+                       handleLogin                        =  {this.handleLogin} />)}
           />
-          <Route exact path               =  '/users/:handle'
-                       render             =  { (props) => ( <User {...props}
-                       loggedInUsername   =  {this.state.username}
-                       loggedInUserId     =  {this.state.userId} />)} 
+          <Route exact path                               =  '/users/:handleUserId'
+                       render                             =  { (props) => ( <User {...props}
+                       loggedInUsername                   =  {this.state.username}
+                       loggedInUserId                     =  {this.state.userId}
+                       handleCompleteUserBusinessesInfo   =  {this.handleCompleteUserBusinessesInfo} 
+                       handleEditedBusiiness              =  {this.handleEditedBusiiness} />)} 
           />
+          <Route exact path                               =  '/users/:handleUserId/businesses/:handleBusinessId' component = { EditBusiness} />
 
 
 

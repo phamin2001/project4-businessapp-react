@@ -1,20 +1,56 @@
 import React, { Component } from 'react';
+import { withRouter, Link} from 'react-router-dom';
 
 class User extends Component {
     constructor(props) {
         super(props);
 
+        this.state = {
+            businesses : []
+        }
+    }
+
+    componentDidMount() {
+        this.getUserBusinesses();
+    }
+
+    getUserBusinesses = async () => {
+        try {
+            const response = await fetch('http://localhost:8080/users/' + this.props.loggedInUserId + '/businesses', {
+                method       :   'GET',
+                credentials  :   'include'
+            });
+    
+            if(response.status != 200) {
+                throw new Error("Something wrong!!");
+            }
+
+            const businessesParsed = await response.json();
+            this.props.handleCompleteUserBusinessesInfo(businessesParsed);
+            this.setState({
+                businesses : businessesParsed
+            })
+        } catch (err) {
+            console.log(err);
+            return err;
+        }
     }
     
     logOutUser = async (e) => {
         try {
-            const response = await fetch('http://localhost:8080/login/logout', {
+            const response = await fetch('http://localhost:8080/auth/logout', {
                 method          :   'POST',
                 credentials     :   'include'
             });
+            
+            if(!response.ok) {
+                throw Error("Something wrong with logout");
+            }
 
-            console.log(response);
-
+            const parsedResponse = await response.json();
+            if(parsedResponse.status == 200) {
+                this.props.history.push('/');
+            }
         
         } catch (err) {
             console.log(err);
@@ -22,7 +58,20 @@ class User extends Component {
         }
     }
 
+    handleCurrentBusiness = (selectedBusiness) => {
+        this.props.handleEditedBusiness(selectedBusiness);
+    }
+
     render() {
+        const userBusinessesList = this.state.businesses.map((business, i) => {
+            return (
+                <li onClick = {this.handleCurrentBusiness.bind(null, business)}>
+                    {business.name}
+                    {business.location}
+                </li>
+            )
+
+        })
         
         return(
             <div>
@@ -38,9 +87,9 @@ class User extends Component {
                 <label>
                     <button name = 'logout' onClick = {this.logOutUser} > Log Out</button><br/>
                 </label>
-                {/* <label>
+                <label>
                     <h3>All User Businesses: <Link to={ {pathname: '/users/' + `${this.props.loggedInUserId}` + '/businesses'} }>{userBusinessesList}</Link></h3>
-                </label> */}
+                </label>
                 <label> 
                     <h3><button onClick = { () => this.props.history.push('/users/' + `${this.props.loggedInUserId}` + '/businesses/newbusiness') }>Add New Business</button></h3>
                 </label>
