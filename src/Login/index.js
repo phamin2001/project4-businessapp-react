@@ -32,6 +32,7 @@ class Login extends Component {
 
             if(loginResponse.status != 200) {
                 throw new Error("Invalid User!!");
+                this.props.history.push('/login');
             }
 
             const parsedLoginResponse = await loginResponse.json();

@@ -78,7 +78,8 @@ class App extends Component {
           <Route exact path                               =  '/users/:handleUserId/edit'
                        render                             =  { (props) => ( <EditUser {...props}
                        loggedInUsername                   =  {this.state.username}
-                       loggedInUserId                     =  {this.state.userId} />)}
+                       loggedInUserId                     =  {this.state.userId} 
+                       handleLogin                        =  {this.handleLogin} />)}
           />
 
 
@@ -89,6 +90,14 @@ class App extends Component {
                        editedBusiness                     =  {this.state.editedBusiness} 
                        handleEditedBusiness               =  {this.handleEditedBusiness} />)} 
           />
+          <Route exact path                               =  '/users/:handleUserId/businesses'
+                       render                             =  { (props) => ( <Businesses {...props} 
+                       loggedInUsername                   =  {this.state.username}
+                       loggedInUserId                     =  {this.state.userId} 
+                       completeUserBusinessesInfo         =  {this.state.completeUserBusinessesInfo} />)}
+          />
+
+          <Route component = { My404 } />
 
         </Switch>
       </main>

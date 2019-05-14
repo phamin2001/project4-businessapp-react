@@ -33,12 +33,16 @@ class EditUser extends Component {
             if(editResponse.status != 200) {
                 throw Error('Something Wrong!!!');
             }
-
-            const editParseUser = await editParseUser.json();
+            
+            const editParseUser = await editResponse.json();
             console.log(editParseUser);
 
-
-        
+            if(editParseUser.edited == "true") { 
+                this.props.handleLogin(editParseUser.username, editParseUser.userId);
+                this.props.history.push('/users/' + editParseUser.userId);
+            } else {
+                alert('Something wrong!!');
+            }
         } catch (err) {
             console.log(err);
             return err;        
