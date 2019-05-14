@@ -5,6 +5,8 @@ import AuthenticationGateway from   './AuthenticationGateway';
 import Login                 from   './Login';
 import User                  from   './User';
 import EditBusiness          from   './EditBusiness';
+import Registration          from   './Registration';
+import EditUser              from   './EditUser';
 
 
 const My404 = () => {
@@ -62,6 +64,10 @@ class App extends Component {
                        render                             =  { (props) => ( <Login {...props}
                        handleLogin                        =  {this.handleLogin} />)}
           />
+          <Route exact path                               =  '/register'
+                       render                             =  { (props) => ( <Registration {...props}
+                       handleLogin                        =  {this.handleLogin} />)}
+          />
           <Route exact path                               =  '/users/:handleUserId'
                        render                             =  { (props) => ( <User {...props}
                        loggedInUsername                   =  {this.state.username}
@@ -69,6 +75,13 @@ class App extends Component {
                        handleCompleteUserBusinessesInfo   =  {this.handleCompleteUserBusinessesInfo} 
                        handleEditedBusiness               =  {this.handleEditedBusiness} />)} 
           />
+          <Route exact path                               =  '/users/:handleUserId/edit'
+                       render                             =  { (props) => ( <EditUser {...props}
+                       loggedInUsername                   =  {this.state.username}
+                       loggedInUserId                     =  {this.state.userId} />)}
+          />
+
+
           <Route exact path                               =  '/users/:handleUserId/businesses/:handleBusinessId'
                        render                             =  { (props) => ( <EditBusiness {...props}
                        loggedInUsername                   =  {this.state.username}

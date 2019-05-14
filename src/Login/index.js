@@ -57,11 +57,11 @@ class Login extends Component {
                     <h1>Login</h1>
                     <label>
                         Username:
-                        <input type='text' name='username' placehodler='Username' onChange={this.handleInput}/>
+                        <input type='text' name='username' placehodler='Username' required onChange={this.handleInput}/>
                     </label>
                     <lable>
                         Password:
-                        <input type='password' name='password' placeholder='Password' onChange={this.handleInput}/>
+                        <input type='password' name='password' placeholder='Password' required onChange={this.handleInput}/>
                     </lable>
                     <input type='Submit' />
                 </form><br/>
