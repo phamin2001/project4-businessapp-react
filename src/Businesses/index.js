@@ -8,7 +8,9 @@ class Businesses extends Comment {
         this.state = {
             query       :  '',
             loading     :  true,
-            searchNews  :  []
+            searchNews  :  [],
+            name        :  '',
+            location    :  ''
         }
     }
 
@@ -16,19 +18,23 @@ class Businesses extends Comment {
 
 
     handleChange = async (e) => {
-        try {
-            const response = await fetch
+        console.log(e)
+
+        // try {
+        //     const response = await fetch()
+        //                       .url('https://api.yelp.com/v3/businesses/search?term=' + 
+        //                                 this.state.name + '&location=' + this.state.location)
         
-        } catch (err) {
-            console.log(err);
-            return err;
-        }
+        // } catch (err) {
+        //     console.log(err);
+        //     return err;
+        // }
     }
 
     render() {
         const userBusinesses = this.props.completeUserBusinessesInfo.loggedInUserBusinesses.map((business, i) => {
             return (
-                <option value={topic.title}>
+                <option value={business.name}>
                     {business.name}, {business.location}
                 </option>
             )
@@ -45,9 +51,15 @@ class Businesses extends Comment {
                         {userBusinesses}
                     </select>
                 </label>
+
+                <div>
+                   
+                </div>
                 
             </div>
         )
     }
 
 }
+
+export default Businesses;

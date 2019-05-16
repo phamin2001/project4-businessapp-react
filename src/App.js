@@ -7,6 +7,8 @@ import User                  from   './User';
 import EditBusiness          from   './EditBusiness';
 import Registration          from   './Registration';
 import EditUser              from   './EditUser';
+import Businesses            from   './Businesses';
+import NewBusiness           from   './NewBusiness';
 
 
 const My404 = () => {
@@ -82,6 +84,11 @@ class App extends Component {
                        handleLogin                        =  {this.handleLogin} />)}
           />
 
+          <Route exact path                               =  '/users/:handleUserId/businesses/newbusiness'
+                       render                             =  { (props) => ( <NewBusiness {...props} 
+                       loggedInUserId                     =  {this.state.userId} />)}
+          />
+
 
           <Route exact path                               =  '/users/:handleUserId/businesses/:handleBusinessId'
                        render                             =  { (props) => ( <EditBusiness {...props}
@@ -96,6 +103,7 @@ class App extends Component {
                        loggedInUserId                     =  {this.state.userId} 
                        completeUserBusinessesInfo         =  {this.state.completeUserBusinessesInfo} />)}
           />
+      
 
           <Route component = { My404 } />
 

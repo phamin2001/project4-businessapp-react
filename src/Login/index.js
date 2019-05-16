@@ -31,7 +31,7 @@ class Login extends Component {
             console.log(loginResponse);
 
             if(loginResponse.status != 200) {
-                throw new Error("Invalid User!!");
+                alert('Invalid User');
                 this.props.history.push('/login');
             }
 

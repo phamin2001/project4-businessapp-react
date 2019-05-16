@@ -67,7 +67,6 @@ class User extends Component {
             return (
                 <li onClick = {this.handleCurrentBusiness.bind(null, business)}>
                     <Link to={ {pathname: '/users/' + `${this.props.loggedInUserId}` + '/businesses/' + `${business.id}`} }> {business.name} ,  {business.location}</Link>
-                   
                 </li>
             )
 
@@ -95,7 +94,7 @@ class User extends Component {
                     <h3><button onClick = { () => this.props.history.push('/users/' + `${this.props.loggedInUserId}` + '/businesses/newbusiness') }>Add New Business</button></h3>
                 </label>
                 <label>
-                    <h2><button onClick = { () => this.props.history.push('/users/' + `${this.props.loggedInUserId}` + '/business/search') }>Check Your Businesses</button></h2>
+                    <h2><button onClick = { () => this.props.history.push('/users/' + `${this.props.loggedInUserId}` + '/businesses/') }>Check Your Businesses</button></h2>
                 </label>
             </div>
         )
