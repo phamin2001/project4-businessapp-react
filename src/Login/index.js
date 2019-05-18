@@ -19,6 +19,8 @@ class Login extends Component {
     hadnleLoginSubmit = async (e) => {
         e.preventDefault();
 
+        console.log(this.state);
+
         try {
             const loginResponse = await fetch('http://localhost:8080/users/login', {
                 method       :  'POST',
@@ -30,14 +32,14 @@ class Login extends Component {
             });
             console.log(loginResponse);
 
-            if(loginResponse.status != 200) {
-                alert('Invalid User');
-                this.props.history.push('/login');
-            }
+            // if(loginResponse.status != 200) {
+            //     alert('Invalid User');
+            //     this.props.history.push('/login');
+            // }
 
             const parsedLoginResponse = await loginResponse.json();
-            // console.log(parsedLoginResponse)
-            
+            console.log(parsedLoginResponse)
+        
             if(parsedLoginResponse.logged) {
                 this.props.handleLogin(parsedLoginResponse.username, parsedLoginResponse.userId);
                 this.props.history.push('/users/' + parsedLoginResponse.userId);

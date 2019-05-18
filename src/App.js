@@ -83,13 +83,10 @@ class App extends Component {
                        loggedInUserId                     =  {this.state.userId} 
                        handleLogin                        =  {this.handleLogin} />)}
           />
-
           <Route exact path                               =  '/users/:handleUserId/businesses/newbusiness'
                        render                             =  { (props) => ( <NewBusiness {...props} 
                        loggedInUserId                     =  {this.state.userId} />)}
           />
-
-
           <Route exact path                               =  '/users/:handleUserId/businesses/:handleBusinessId'
                        render                             =  { (props) => ( <EditBusiness {...props}
                        loggedInUsername                   =  {this.state.username}

@@ -35,6 +35,31 @@ class User extends Component {
             return err;
         }
     }
+
+    deleteUser = async (e) => {
+        try {
+            let verify = window.confirm('Are you sure!!');
+
+            if(verify) {
+                const deleteUser = await fetch('http://localhost:8080/users/' + this.props.loggedInUserId, {
+                    method        :  'DELETE',
+                    credentials   :  'include'
+                });
+
+                const parsedResonse = await deleteUser.json();
+
+                if(parsedResonse.status == 'OK') {
+                    alert('Sorry! You Delete your profile.');
+                    this.props.history.push('/');
+                }
+            } else {
+                alert('Good Choice!');
+            }
+        } catch (err) {
+            console.log(err);
+            return err;
+        }
+    }
     
     logOutUser = async (e) => {
         try {
