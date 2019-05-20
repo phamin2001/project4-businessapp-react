@@ -62,7 +62,7 @@ class Registration extends Component {
                     </lable>
                     <lable>
                         Password:
-                        <input type='password' name='password' placeholder='Password' required onChang={this.handleInput} />
+                        <input type='password' name='password' placeholder='Password'  onChange={this.handleInput} />
                     </lable>
                     <input type='Submit' />
                 </form>
