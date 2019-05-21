@@ -46,6 +46,8 @@ class App extends Component {
         loggedInUserBusinesses : businessesParsed
       }
     })
+
+    console.log(this.state.completeUserBusinessesInfo)
   }
 
   handleEditedBusiness = (business) => {
@@ -87,6 +89,14 @@ class App extends Component {
                        render                             =  { (props) => ( <NewBusiness {...props} 
                        loggedInUserId                     =  {this.state.userId} />)}
           />
+
+          <Route exact path                               =  '/users/:handleUserId/businesses'
+                       render                             =  { (props) => ( <Businesses {...props} 
+                       loggedInUsername                   =  {this.state.username}
+                       loggedInUserId                     =  {this.state.userId} 
+                       completeUserBusinessesInfo         =  {this.state.completeUserBusinessesInfo} />)}
+          />
+          
           <Route exact path                               =  '/users/:handleUserId/businesses/:handleBusinessId'
                        render                             =  { (props) => ( <EditBusiness {...props}
                        loggedInUsername                   =  {this.state.username}
@@ -94,16 +104,8 @@ class App extends Component {
                        editedBusiness                     =  {this.state.editedBusiness} 
                        handleEditedBusiness               =  {this.handleEditedBusiness} />)} 
           />
-          <Route exact path                               =  '/users/:handleUserId/businesses'
-                       render                             =  { (props) => ( <Businesses {...props} 
-                       loggedInUsername                   =  {this.state.username}
-                       loggedInUserId                     =  {this.state.userId} 
-                       completeUserBusinessesInfo         =  {this.state.completeUserBusinessesInfo} />)}
-          />
-      
-
+         
           <Route component = { My404 } />
-
         </Switch>
       </main>
     )
