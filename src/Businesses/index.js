@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import SearchContainer      from '../SearchContainer';
 import { Link }             from 'react-router-dom';
 
 const yelp = require('yelp-fusion');
@@ -8,22 +9,22 @@ class Businesses extends Component {
         super();
 
         this.state = {
-            query             :  '',
-            loading           :  true,
-            searchBusinesses  :  [],
             name              :  '',
-            location          :  ''
+            location          :  '',
+            loading           :  true,
+            searchBusinesses  :  []
         }
     }
 
-
-
+    handleInput = (e) => {
+        this.setState({
+            [e.target.name]  : e.target.value
+        })
+    }
 
     handleChange = async (e) => {
-        // console.log(e.target.value.split(" ")[0]);
-        // console.log(e.target.value.split(" ")[1]);
 
-        const apiKey = '<KgLAKJxptImNUckyyiY72zixbqz2g1DS3M0T-HiT3vxmBe45SlsJ6JnKwtAxdK452lLukwC2iOgFwQqmt5WVzOPQygE9oEadbtztsmWIE5TjFZA9icZr-zLwffLIXHYx>';
+        const apiKey = 'KgLAKJxptImNUckyyiY72zixbqz2g1DS3M0T-HiT3vxmBe45SlsJ6JnKwtAxdK452lLukwC2iOgFwQqmt5WVzOPQygE9oEadbtztsmWIE5TjFZA9icZr-zLwffLIXHYx';
         
         const searchRequest = {
             term     : e.target.value.split(" ")[0],
@@ -33,28 +34,56 @@ class Businesses extends Component {
         const client = yelp.client(apiKey);
 
         try {
-            // const response = await client.search(searchRequest, {
-            //     method : 'no-cors'
-            // });
 
-
-
-
-            const response = await fetch('https://api.yelp.com/v3/businesses/search?term=' + 
-                                        e.target.value.split(" ")[0] + '&location=' + e.target.value.split(" ")[1], {
+            const response = await fetch('https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=' + 
+                                          e.target.value.split(" ")[0] + '&location=' + e.target.value.split(" ")[1], {
                                         method         :   'GET',
-                                        'mode'           :   'no-cors',
                                         headers        :  {
-                                            'Authorization'  : 'Bearer apiKey'
+                                            'Authorization'  : `Bearer ${apiKey}`,
+                                            'Access-Control-Allow-Origin': '*',
+                                            'Access-Control-Allow-Headers' : 'Content-Type',
+                                            'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE',
+                                            'Access-Control-Allow-Credentials' : 'true'
                                         }
                                      });
-                   
-            console.log(response);
 
-            // const parsedResponse = await response.json();
-            // console.log(parsedResponse);
-                              
-        
+            const parsedResponse = await response.json();
+            console.log(parsedResponse);
+            this.setState({
+                searchBusinesses: parsedResponse,
+                loading: false
+            })
+
+        } catch (err) {
+            console.log(err);
+            return err;
+        }
+    }
+
+    handleSubmit = async (e) => {
+        e.preventDefault();
+
+        const apiKey = 'KgLAKJxptImNUckyyiY72zixbqz2g1DS3M0T-HiT3vxmBe45SlsJ6JnKwtAxdK452lLukwC2iOgFwQqmt5WVzOPQygE9oEadbtztsmWIE5TjFZA9icZr-zLwffLIXHYx';
+
+        try {
+            const response = await fetch('https://cors-anywhere.herokuapp.com/https://api.yelp.com/v3/businesses/search?term=' + 
+                                            this.state.name + '&location=' + this.state.location, {
+                                                method         :   'GET',
+                                                headers        :  {
+                                                    'Authorization'  : `Bearer ${apiKey}`,
+                                                    'Access-Control-Allow-Origin': '*',
+                                                    'Access-Control-Allow-Headers' : 'Content-Type',
+                                                    'Access-Control-Allow-Methods' : 'GET,PUT,POST,DELETE',
+                                                    'Access-Control-Allow-Credentials' : 'true'
+                                                }
+                                            });
+
+            const parsedResponse = await response.json();
+            console.log(parsedResponse);
+            this.setState({
+                searchBusinesses: parsedResponse,
+                loading: false
+            })
         } catch (err) {
             console.log(err);
             return err;
@@ -83,11 +112,20 @@ class Businesses extends Component {
                 </label>
 
                 <div>
-                   
+                   <form onSubmit={this.handleSubmit} >
+                        <lable>
+                            <h2>Search Business Address:</h2>
+                            Name: <input type='text' name='name' placeholder='Name of Business' onChange={this.handleInput} />
+                            Location: <input type='text' name='location' placeholder='Location' onChange={this.handleInput} />
+                        </lable>
+                    <button type='submit'>Search</button>
+                   </form>
                 </div>
 
-                
-                
+                <div>
+                    {this.state.loading ? <span>Type in the searh box</span> : <SearchContainer searchBusinesses = {this.state.searchBusinesses} />}
+                </div>
+
             </div>
         )
     }
