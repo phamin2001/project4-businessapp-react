@@ -21,7 +21,9 @@ class EditBusiness extends Component {
         e.preventDefault();
 
         try {
-            const editResponse = await fetch('http://localhost:8080/users/' + this.props.loggedInUserId + '/businesses/' + this.props.editedBusiness.id, {
+            const editResponse = await fetch(`${process.env.REACT_APP_BACKEND}` + 'users/' + this.props.loggedInUserId + '/businesses/' + this.props.editedBusiness.id, {
+                // 'http://localhost:8080/'
+            
                 method        :  'PUT',
                 credentials   :  'include',
                 body          :  JSON.stringify(this.state),

@@ -20,7 +20,8 @@ class Login extends Component {
         e.preventDefault();
 
         try {
-            const loginResponse = await fetch('http://localhost:8080/users/login', {
+            const loginResponse = await fetch(`${process.env.REACT_APP_BACKEND}` + 'users/login', {
+                // 'http://localhost:8080/' 
                 method       :  'POST',
                 credentials  :  'include',
                 body         :   JSON.stringify(this.state),

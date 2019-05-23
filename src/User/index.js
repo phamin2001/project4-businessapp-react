@@ -41,7 +41,8 @@ class User extends Component {
             let verify = window.confirm('Are you sure!!');
 
             if(verify) {
-                const deleteUser = await fetch('http://localhost:8080/users/' + this.props.loggedInUserId, {
+                const deleteUser = await fetch(`${process.env.REACT_APP_BACKEND}` + 'users/' + this.props.loggedInUserId, {
+                    // 'http://localhost:8080/'
                     method        :  'DELETE',
                     credentials   :  'include'
                 });

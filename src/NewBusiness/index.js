@@ -25,7 +25,8 @@ class NewBusiness extends Component {
         e.preventDefault();
 
         try {
-            const newBusinessResponse = await fetch('http://localhost:8080/users/' + this.props.loggedInUserId + '/businesses', {
+            const newBusinessResponse = await fetch(`${process.env.REACT_APP_BACKEND}` + 'users/' + this.props.loggedInUserId + '/businesses', {
+                // 'http://localhost:8080/' 
                 method        :  'POST',
                 credentials   :  'include',
                 body          :  JSON.stringify(this.state),
